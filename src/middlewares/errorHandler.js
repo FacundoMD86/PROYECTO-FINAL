@@ -1,0 +1,25 @@
+import logger from "../config/loggers/factory.js";
+
+const errorHandler = (error, req, res, next) => {
+  req.logger = logger;
+  if (`${error.statusCode}`.startsWith("4")) {
+    req.logger.WARN(
+      `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
+        error.message
+      }`
+    );
+  } else {
+    req.logger.ERROR(
+      `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
+        error.message
+      }`
+    );
+  }
+  return res.status(error.statusCode).json({
+    method: req.method,
+    path: req.url,
+    message: error.message,
+  });
+};
+
+export default errorHandler;
