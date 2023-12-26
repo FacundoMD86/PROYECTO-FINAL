@@ -22,7 +22,7 @@ export default class ToysService {
     return response
   }
   destroyService(id){
-    let response = this.repository.destroyedRepository(id);
+    let response = this.repository.destroyRepository(id);
     return response
   }
 }

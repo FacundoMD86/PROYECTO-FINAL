@@ -21,7 +21,7 @@ export default class AuthMongo {
   signout() {
     return {
       message: "user signed out!",
-      response: null,
+      response: true,
     };
   }
   async read() {

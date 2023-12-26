@@ -1,15 +1,15 @@
-import logger from "../config/loggers/factory.js";
+import loggers from "../config/loggers/factory.js";
 
 const errorHandler = (error, req, res, next) => {
-  req.logger = logger;
+  req.logger = loggers;
   if (`${error.statusCode}`.startsWith("4")) {
-    req.logger.WARN(
+    loggers.ERROR(
       `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
         error.message
       }`
     );
   } else {
-    req.logger.ERROR(
+    loggers.FATAL(
       `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
         error.message
       }`
@@ -23,3 +23,29 @@ const errorHandler = (error, req, res, next) => {
 };
 
 export default errorHandler;
+
+/*import loggers from "../config/loggers/factory.js";
+
+const errorHandler = (error, req, res, next) => {
+  req.logger = loggers;
+  if (`${error.statusCode}`.startsWith("4")) {
+    req.logger.ERROR(
+      `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
+        error.message
+      }`
+    );
+  } else {
+    req.logger.FATAL(
+      `${req.method} ${req.url} - ${new Date().toLocaleTimeString()} - ${
+        error.message
+      }`
+    );
+  }
+  return res.status(error.statusCode).json({
+    method: req.method,
+    path: req.url,
+    message: error.message,
+  });
+};
+
+export default errorHandler;*/

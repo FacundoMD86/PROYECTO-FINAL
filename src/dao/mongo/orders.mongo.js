@@ -15,7 +15,7 @@ export default class OrderMongo {
       //.sort({ type: 1 })
       //.populate("user_id", "mail");
     if (all.length > 0) {
-      /*let ticket = await Order.aggregate([
+      let ticket = await Order.aggregate([
         { $match: { user_id } },
         { $set: { subtotal: { $multiply: ["$price", "$quantity"] } } },
         { $group: { _id: "$user_id", total: { $sum: "$subtotal" } } },
@@ -27,7 +27,7 @@ export default class OrderMongo {
             date: new Date(),
           },
         },
-      ]);*/
+      ]);
       return {
         message: "orders read",
         response: all,

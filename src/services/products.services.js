@@ -21,7 +21,7 @@ export default class ProductsService {
     return response
   }
   destroyService(id){
-    let response = this.model.destroyedModel(id)
+    let response = this.model.destroyModel(id)
     return response
   }
 }

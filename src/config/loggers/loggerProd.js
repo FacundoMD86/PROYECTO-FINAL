@@ -2,8 +2,8 @@ import { createLogger, format, transports } from "winston";
 const { simple } = format;
 
 const levels = {
-  ERROR: 1,
-  WARN: 2,
+  FATAL: 1,
+  ERROR: 2,
   INFO: 3,
   HTTP: 4,
 };
@@ -17,7 +17,7 @@ export default createLogger({
     }),
     new transports.File({
       filename: "./errors.log",
-      level: "WARN",
+      level: "ERROR",
       format: simple(),
     }),
   ],

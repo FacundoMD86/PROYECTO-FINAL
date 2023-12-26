@@ -28,7 +28,7 @@ export default class CartsRouter extends MyRouter {
         if (req.query.state) {
           state = req.query.state;
         }
-        let response = await toysController.readController(user_id, state);
+        let response = await cartsController.readController(user_id, state);
         if (response) {
           return res.sendSuccess(response);
         } else {
@@ -37,11 +37,11 @@ export default class CartsRouter extends MyRouter {
       } catch (error) {
         next(error);
       }
-    }); /*
+    }); 
     this.read("/:id", async (req, res, next) => {
       try {
         let { id } = req.params;
-        let response = await toysController.readController(id);
+        let response = await cartsController.readController(id);
         if (response) {
           return res.sendSuccess(response);
         } else {
@@ -50,6 +50,6 @@ export default class CartsRouter extends MyRouter {
       } catch (error) {
         next(error);
       }
-    });*/
+    });
   }
 }

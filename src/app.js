@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import express from "express";
 import __dirname from "./utils.js";
 import passport from "passport";
@@ -16,24 +15,17 @@ import "./config/config.js";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
 import MongoStore from "connect-mongo";
-//import morgan from "morgan";
 
 import indexRouter from "./routes/index.js";
-//import MongoConnect from "./config/Mongo.js";
 
 //SERVIDOR
 const app = express();
 
-//database
-//const mongo = new MongoConnect(process.env.LINK_DB);
-//mongo.connect_mongo();
-//mongo.single();
-
-//const io = new Server(server);
-
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/html/inicio.html");
 });
+
+//const io = new Server(server);
 
 /*const message = [];
 
@@ -75,8 +67,6 @@ app.use("/files", express.static(`${__dirname}/files`));
 
 //router
 const router = new indexRouter();
-//router.getRouter().use(router.responses);
-//app.use("/api", router.getRouter());
 
 //Middlewares
 app.use(compression({ brotli: { enable: true, zlib: {} } }));
@@ -98,10 +88,11 @@ app.use(
 inicializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(morgan("dev"));
 app.use("/", express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//endpoints
 app.use("/api", router.getRouter());
 app.use(errorHandler);
 app.use(notFoundHandler);

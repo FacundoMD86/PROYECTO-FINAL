@@ -114,7 +114,7 @@ export default class OrdersRouter extends MyRouter {
           return res.sendNotFound("orders");
         }
       } catch (error) {
-        console.log(error);
+        next(error);
       }
     });
   }

@@ -25,7 +25,7 @@ export default class CartsService {
     return response;
   }
   destroyService(id) {
-    let response = this.model.destroyedModel(id);
+    let response = this.model.destroyModel(id);
     return response;
   }*/
 }
